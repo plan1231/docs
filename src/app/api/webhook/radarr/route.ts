@@ -4,6 +4,9 @@ import { movies, uploadLogs } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { uploadFile, generateS3Key } from '@/lib/s3';
 
+// Force dynamic rendering - don't pre-render at build time
+export const dynamic = 'force-dynamic';
+
 // Types for Radarr webhook payload
 interface RadarrMovieFile {
   path: string;

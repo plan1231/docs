@@ -3,6 +3,9 @@ import { db } from '@/db';
 import { movies, episodes, seasons, series } from '@/db/schema';
 import { desc, eq } from 'drizzle-orm';
 
+// Force dynamic rendering - don't pre-render at build time
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     // Get recent movies
