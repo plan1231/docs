@@ -10,7 +10,7 @@ interface Movie {
   title: string;
   year: number | null;
   fileSize: number | null;
-  uploadStatus: string;
+  uploadStatus: string | null;
 }
 
 interface EpisodeWithSeries {
@@ -18,7 +18,7 @@ interface EpisodeWithSeries {
   title: string | null;
   episodeNumber: number | null;
   fileSize: number | null;
-  uploadStatus: string;
+  uploadStatus: string | null;
   seasonNumber: number | null;
   seriesTitle: string;
 }

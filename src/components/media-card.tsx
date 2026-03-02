@@ -5,7 +5,7 @@ interface MediaCardProps {
   title: string;
   year?: number | null;
   fileSize?: number | null;
-  uploadStatus: string;
+  uploadStatus: string | null;
   type: "movie" | "episode";
   episodeInfo?: string;
 }
@@ -17,7 +17,7 @@ function formatFileSize(bytes: number | null | undefined): string {
   return `${(bytes / Math.pow(1024, i)).toFixed(1)} ${units[i]}`;
 }
 
-function getStatusVariant(status: string): "default" | "secondary" | "destructive" | "outline" {
+function getStatusVariant(status: string | null): "default" | "secondary" | "destructive" | "outline" {
   switch (status) {
     case "completed":
       return "default";
