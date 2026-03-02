@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/db';
+import { getDb } from '@/db';
 import { series, seasons, episodes, uploadLogs } from '@/db/schema';
 import { eq, and } from 'drizzle-orm';
 import { uploadFile, generateS3Key } from '@/lib/s3';
@@ -36,6 +36,7 @@ interface SonarrPayload {
 
 export async function POST(request: NextRequest) {
   try {
+    const db = getDb();
     const payload: SonarrPayload = await request.json();
     console.log(`Received Sonarr webhook: ${payload.eventType}`);
 

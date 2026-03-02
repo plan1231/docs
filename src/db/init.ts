@@ -1,8 +1,10 @@
-import { db } from './index';
+import { getDb } from './index';
 import * as schema from './schema';
 
 // This ensures the database tables are created
 export async function initializeDatabase() {
+  const db = getDb();
+
   try {
     // Simple query to check if database is accessible
     await db.select().from(schema.series).limit(1);

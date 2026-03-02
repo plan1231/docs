@@ -1,10 +1,12 @@
-import { db } from "@/db";
+import { getDb } from "@/db";
 import { movies, episodes, series, seasons } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { MediaGrid } from "@/components/media-grid";
 import { MediaGridSkeleton } from "@/components/loading-skeleton";
 
 async function getMediaData() {
+  const db = getDb();
+
   const allMovies = await db.select({
     id: movies.id,
     title: movies.title,

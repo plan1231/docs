@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/db';
+import { getDb } from '@/db';
 import { movies, episodes, seasons, series } from '@/db/schema';
 import { desc, eq } from 'drizzle-orm';
 
@@ -8,6 +8,8 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {
+    const db = getDb();
+
     // Get recent movies
     const recentMovies = await db
       .select({
